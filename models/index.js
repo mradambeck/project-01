@@ -5,3 +5,4 @@ mongoose.connect("mongodb://localhost/project01");
 
 module.exports.Night = require("./night.js");
 module.exports.Event = require("./event.js");
+module.exports.Option = require("./option.js");
