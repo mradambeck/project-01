@@ -2,14 +2,16 @@
 // SERVER SIDE JAVASCRIPT //
 ////////////////////////////
 
-
 // setup express
 var express = require('express'),
   db = require('./models'),
-  app = express();
+  app = express(),
+  bodyParser = require('body-parser');
 
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 console.log('server.js is running');
 
@@ -28,13 +30,28 @@ app.get('/events', function homepage (req, res) {
   res.sendFile(__dirname + '/views/event.html');
 });
 
+
 // JSON API Endpoints
 
-// TODO: Make api/sanity endpoint
 app.get('/api/sanity', function sanity(req, res){
   res.json({
     message: "server.js: api/sanity running"
   });
+});
+
+app.post('/api/events', function createEvent(req, res){
+  console.log('server.js, /api/events:');
+  console.log(req.body);
+  var newEvent = new db.Event(req.body);
+  newEvent.save(function handleDBSave(err, data){
+    if (err){
+      console.log('handleDBSave err: ', err);
+    }
+    console.log('server.js, newEvent data:');
+    console.log(data);
+    res.json(data);
+  });
+
 });
 
 

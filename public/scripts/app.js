@@ -2,29 +2,35 @@
 // CLIENT SIDE JAVASCRIPT //
 ////////////////////////////
 
-var $startModal;
-
 $(document).ready(function() {
   console.log('app.js loaded!');
+  
 
-  $.ajax({
-    method: "GET",
-    url: "api/sanity",
-    success: sanitySuccess,
-    error: sanityError
+  $('#event-form').on('submit', function(event) {
+    event.preventDefault();
+    var formData = $(this).serialize();
+    console.log(formData);
+
+    $.ajax({
+      method: 'POST',
+      url: '/api/events',
+      data: formData,
+      success: newEventSuccess,
+      error: newEventError
+    });
+
+    // $(this).trigger("reset");
   });
-
-  $('#startModal').modal();
 
 });
 
-// Just to mae sure ajax and app.js is working
-function sanitySuccess(json){
-  console.log("app.js, ajax call working");
+// form submission handlers
+function newEventSuccess(json){
+  console.log("app.js, ajax call success");
   console.log(json);
 }
 
-function sanityError(err){
+function newEventError(json){
   console.log("app.js, ajax call error");
   console.log(err);
 }
