@@ -42,15 +42,35 @@ app.get('/api/sanity', function sanity(req, res){
 app.post('/api/events', function createEvent(req, res){
   console.log('server.js, /api/events:');
   console.log(req.body);
-  var newEvent = new db.Event(req.body);
-  newEvent.save(function handleDBSave(err, data){
+  var newActivity = new db.Activity({
+    name: req.body.activityname
+  });
+
+  newActivity.save(function handleDBSave(err, activity){
     if (err){
       console.log('handleDBSave err: ', err);
     }
-    console.log('server.js, newEvent data:');
-    console.log(data);
-    res.json(data);
+    console.log('server.js, newEvent, newActivity:');
+    console.log(activity);
+    var newEvent = new db.Event({
+      name: req.body.name,
+      date: req.body.date,
+      activity: activity
+    });
+
+    newEvent.save(function handleDBSave(err, data){
+      if (err){
+        console.log('handleDBSave err: ', err);
+      }
+      console.log('server.js, newEvent data:');
+      console.log(data);
+      res.json(data);
+    });
   });
+
+
+
+
 
 });
 

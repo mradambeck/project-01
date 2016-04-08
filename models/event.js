@@ -5,7 +5,7 @@ var Activity = require('./activity');
 var EventSchema = new Schema ({
   name: String,
   date: String,
-  activities: [Activity.schema]
+  activity: Activity.schema
 });
 
 var Event = mongoose.model('Event', EventSchema);
