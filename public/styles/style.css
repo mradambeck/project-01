@@ -17,6 +17,10 @@ p {
   font-weight: 400;
 }
 
+.activity-title {
+  text-align: center;
+}
+
 .add-suggestion-card {
   text-align: center;
   height: 100px;
@@ -33,10 +37,6 @@ p {
 
 .btn-primary {
   margin-top: 24px;
-}
-
-.activity-title {
-  text-align: center;
 }
 
 .form-block {
@@ -63,21 +63,16 @@ p {
   box-shadow: 3px 3px 3px #e0e0e0;
 }
 
-.vote-count{
-  text-align: center;
-}
-
 .vote-btn {
   margin-top: 42px;
 }
 
-.votes  {
+.vote-count{
   text-align: center;
 }
 
-#intro-title {
+.votes  {
   text-align: center;
-  margin-top: 15px;
 }
 
 #event-title {
@@ -85,4 +80,13 @@ p {
   /*border-bottom: 1px solid #000000;*/
   text-align: center;
   /*box-shadow: 3px 3px 3px #cfcfcf;*/
+}
+
+#intro-title {
+  text-align: center;
+  margin-top: 15px;
+}
+
+form #event-title {
+  text-align: left;
 }
