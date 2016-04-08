@@ -3,6 +3,6 @@ mongoose.connect("mongodb://localhost/project01");
 
 // import models:
 
-module.exports.Night = require("./night.js");
+module.exports.Suggestion = require("./suggestion.js");
+module.exports.Activity = require("./activity.js");
 module.exports.Event = require("./event.js");
-module.exports.Option = require("./option.js");

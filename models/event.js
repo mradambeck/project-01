@@ -1,12 +1,11 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var Option = require('./option');
+var Activity = require('./activity');
 
 var EventSchema = new Schema ({
   name: String,
-  timeStart: Number,
-  timeEnd: Number,
-  options: [optionSchema]
+  date: String,
+  activities: [Activity.schema]
 });
 
 var Event = mongoose.model('Event', EventSchema);

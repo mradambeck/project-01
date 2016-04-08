@@ -1,3 +1,88 @@
 body {
-  background-color: #cdcdcd;
+  background-image: url("/images/geometry.png");
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
+
+div {
+  /*border: 1px dotted grey;*/
+}
+
+h1 {
+  font-weight: 700;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+.add-suggestion-card {
+  text-align: center;
+  height: 100px;
+}
+
+.blurb {
+  padding-left: 20px;
+}
+
+.btn-margin {
+  margin-left: 5px;
+  margin-bottom: 15px;
+}
+
+.btn-primary {
+  margin-top: 24px;
+}
+
+.activity-title {
+  text-align: center;
+}
+
+.form-block {
+  padding-top: 25px;
+  padding-right: 90px;
+}
+
+.intro-card {
+  background-color: #e7f2ef;
+  /*border: 1px solid #000000;*/
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px #e0e0e0;
+  padding-bottom: 40px;
+}
+
+.spacer {
+  height: 15px;
+}
+
+.suggestion-card {
+  background-color: #e7f2ef;
+  /*border: 1px solid #000000;*/
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px #e0e0e0;
+}
+
+.vote-count{
+  text-align: center;
+}
+
+.vote-btn {
+  margin-top: 42px;
+}
+
+.votes  {
+  text-align: center;
+}
+
+#intro-title {
+  text-align: center;
+  margin-top: 15px;
+}
+
+#event-title {
+  background-color: #f0f0f0;
+  /*border-bottom: 1px solid #000000;*/
+  text-align: center;
+  /*box-shadow: 3px 3px 3px #cfcfcf;*/
 }

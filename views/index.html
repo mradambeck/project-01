@@ -18,16 +18,58 @@
     <!-- jQuery from CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
+    <!-- Bootstrap Javascript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
     <!-- Handlebars -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 
     <!-- link to custom javascript file -->
     <script src="scripts/app.js"></script>
 
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic|Open+Sans' rel='stylesheet' type='text/css'>
+
   </head>
   <body>
-    <p>
-      <h1>Just a sanity check</h1>
-    </p>
+    <div class="container-fluid">
+      <div class="row spacer"></div>
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1 intro-card">
+          <div class="row">
+            <div class="col-xs-8 col-xs-offset-2" id="intro-title">
+              <h1>Plan your night!</h1>
+            </div>
+            <div class="col-sm-10 col-sm-offset-1">
+              <div class="col-md-8 form-block">
+                <form>
+                  <div class="form-group">
+                    <label for="title">Event title</label>
+                    <input type="text" class="form-control" id="event-title" placeholder="ie, Bob's Birthday Bash!">
+                  </div>
+                  <div class="form-group">
+                    <label for="date">Event date</label>
+                    <input type="date" class="form-control" id="date">
+                  </div>
+                  <div class="form-group">
+                    <label for="location">Type of place you want to go</label>
+                    <input type="text" class="form-control" id="location" placeholder="Restaurant, Bar, Movie">
+                  </div>
+                  <button type="submit" class="btn btn-success btn-lg pull-right">Let's go!</button>
+                </form>
+              </div>
+              <div class="col-md-4 blurb">
+                <p><h2>What is this app?</h2></p>
+                <p>Do you ever want to make plans with a group of friends, but struggle to decide on where to go? Use this app to come up with a lose plan, and invite your friends to fill in the blanks and vote on the final decision!</p>
+                <p>It's easy to use and fun!</p>
+                <p>I suck at writing copy! But I do want to fill up a bit more space, so here's some random BS.</p>
+                <p>It was made by Adam Beck and his two chihuahuas while he was enrolled in the General Assembly Web Design Immersive class.</p>
+                <p>I like turtles.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

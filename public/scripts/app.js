@@ -2,6 +2,8 @@
 // CLIENT SIDE JAVASCRIPT //
 ////////////////////////////
 
+var $startModal;
+
 $(document).ready(function() {
   console.log('app.js loaded!');
 
@@ -12,6 +14,7 @@ $(document).ready(function() {
     error: sanityError
   });
 
+  $('#startModal').modal();
 
 });
 
