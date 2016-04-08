@@ -1,4 +1,4 @@
-//////////////////////////// 
+////////////////////////////
 // SERVER SIDE JAVASCRIPT //
 ////////////////////////////
 
@@ -22,6 +22,10 @@ console.log('server.js is running');
 
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
+});
+
+app.get('/events', function homepage (req, res) {
+  res.sendFile(__dirname + '/views/event.html');
 });
 
 // JSON API Endpoints
