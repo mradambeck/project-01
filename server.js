@@ -6,7 +6,8 @@
 var express = require('express'),
   db = require('./models'),
   app = express(),
-  bodyParser = require('body-parser');
+  bodyParser = require('body-parser'),
+  controllers = require('./controllers');
 
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
@@ -26,11 +27,6 @@ app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-
-// app.get('/events', function homepage (req, res) {
-//   res.sendFile(__dirname + '/views/event.html');
-// });
-
 app.get('/events/:id', function homepage (req, res) {
   console.log('server.js: app.get events/:id');
   res.sendFile(__dirname + '/views/event.html');
@@ -38,22 +34,7 @@ app.get('/events/:id', function homepage (req, res) {
 
 // JSON API Endpoints
 
-app.get('/api/sanity', function sanity(req, res){
-  res.json({
-    message: "server.js: api/sanity running"
-  });
-});
-
-// GET ALL EVENTS
-app.get('/api/events', function (req, res){
-  //find events
-  db.Event.find(function (err, events){
-    if (err){
-      return console.log('ERR: server.js: GET /api/events: ', err);}
-    console.log('BOOM: server.js: GET api/events', events);
-    res.json(events);
-  });
-});
+app.get('/api/events', controllers.events.index);
 
 // GET ONE EVENT
 app.get('/api/events/:id', function (req, res) {
