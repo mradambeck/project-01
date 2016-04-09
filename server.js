@@ -28,44 +28,14 @@ app.get('/', function homepage (req, res) {
 });
 
 app.get('/events/:id', function homepage (req, res) {
-  console.log('server.js: app.get events/:id');
   res.sendFile(__dirname + '/views/event.html');
 });
 
-// JSON API Endpoints
 
+// JSON API Endpoints
 app.get('/api/events', controllers.events.index);
 app.get('/api/events/:id', controllers.events.show);
-
-// CREATE EVENT via form
-app.post('/events', function createEvent(req, res){
-    console.log('server.js, /events:');
-    console.log(req.body);
-      var newActivity = new db.Activity({
-        name: req.body.activityname
-      });
-
-      var newEvent = new db.Event({
-        name: req.body.name,
-        date: req.body.date,
-        activity: newActivity
-      });
-
-      newEvent.save(function handleDBSave(err, data){
-        if (err){
-          console.log('handleDBSave err: ', err);
-          return res.status(400).send({error: err});
-        }
-        console.log('server.js, newEvent data:');
-        console.log(data);
-        console.log('trying to redirect...');
-        res.redirect('/events/' + data._id);
-      });
-
-
-    // });
-
-});
+app.post('/events', controllers.events.createEvent);
 
 
 ////////////
