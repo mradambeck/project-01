@@ -89,11 +89,16 @@
       </div>
 
       <!-- Main Modal -->
-      <div class="modal fade" tabindex="-1" role="dialog" id="startModal">
-        <div class="modal-dialog modal-lg">
+      <div class="modal fade" tabindex="-1" role="dialog" id="suggest-modal">
+        <div class="modal-dialog modal-sm">
           <div class="modal-content">
             <div class="modal-body">
-              <h3>dummy text</h3>
+              <div class="modal-title">SUGGEST A NEW DESTINATION</div>
+              <form id="suggest-form">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="suggestion" placeholder="ie, Chevy's">
+                  <input class="btn btn-success btn-block" id="suggest-submit-btn" type="submit" value="Submit">
+                </div>
             </div>
           </div>
         </div>

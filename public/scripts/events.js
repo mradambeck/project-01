@@ -33,9 +33,12 @@ $(document).ready(function() {
   });
 
   $('#suggest-btn').on('click', function(){
-    $('#startModal').modal();
+    $('#suggest-modal').modal();
   });
 
+  $('#suggest-submit-btn').on('click', function(){
+    
+  });
 
 });
 

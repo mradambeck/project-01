@@ -52,6 +52,12 @@ p {
   padding-bottom: 40px;
 }
 
+.modal-title{
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 .spacer {
   height: 15px;
 }
@@ -85,6 +91,15 @@ p {
 #intro-title {
   text-align: center;
   margin-top: 15px;
+}
+
+#suggest-modal div.modal-body{
+  padding-bottom: 5px;
+}
+
+#suggest-submit-btn {
+  margin-top: 18px;
+  margin-bottom: 0px;
 }
 
 form #event-title {
