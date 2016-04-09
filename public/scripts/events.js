@@ -19,7 +19,6 @@ var eventData,
 
 $(document).ready(function() {
   console.log('page loaded, events.js ready!'); // sanity check
-
   $eventTarget = $('#event-target');
 
   // handlebars compile
@@ -33,7 +32,10 @@ $(document).ready(function() {
     error: handleError
   });
 
-  // $('#startModal').modal();
+  $('#suggest-btn').on('click', function(){
+    $('#startModal').modal();
+  });
+
 
 });
 
