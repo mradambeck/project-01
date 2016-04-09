@@ -26,10 +26,15 @@ app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/events', function homepage (req, res) {
+
+// app.get('/events', function homepage (req, res) {
+//   res.sendFile(__dirname + '/views/event.html');
+// });
+
+app.get('/events/:id', function homepage (req, res) {
+  console.log('server.js: app.get events/:id');
   res.sendFile(__dirname + '/views/event.html');
 });
-
 
 // JSON API Endpoints
 
@@ -39,38 +44,55 @@ app.get('/api/sanity', function sanity(req, res){
   });
 });
 
-app.post('/api/events', function createEvent(req, res){
-  console.log('server.js, /api/events:');
-  console.log(req.body);
-  var newActivity = new db.Activity({
-    name: req.body.activityname
-  });
-
-  newActivity.save(function handleDBSave(err, activity){
+// GET ALL EVENTS
+app.get('/api/events', function (req, res){
+  //find events
+  db.Event.find(function (err, events){
     if (err){
-      console.log('handleDBSave err: ', err);
-    }
-    console.log('server.js, newEvent, newActivity:');
-    console.log(activity);
-    var newEvent = new db.Event({
-      name: req.body.name,
-      date: req.body.date,
-      activity: activity
-    });
-
-    newEvent.save(function handleDBSave(err, data){
-      if (err){
-        console.log('handleDBSave err: ', err);
-      }
-      console.log('server.js, newEvent data:');
-      console.log(data);
-      res.json(data);
-    });
+      return console.log('ERR: server.js: GET /api/events: ', err);}
+    console.log('BOOM: server.js: GET api/events', events);
+    res.json(events);
   });
+});
+
+// GET ONE EVENT
+app.get('/api/events/:id', function (req, res) {
+  var id = req.params.id;
+  console.log('GET /api/events/:id:', id);
+
+  db.Event.findOne({_id: id}, function (err, foundEvent){
+    if (err) {return console.log('index error: ', err);}
+    res.json(foundEvent);
+  });
+});
+
+// CREATE EVENT via form
+app.post('/events', function createEvent(req, res){
+    console.log('server.js, /events:');
+    console.log(req.body);
+      var newActivity = new db.Activity({
+        name: req.body.activityname
+      });
+
+      var newEvent = new db.Event({
+        name: req.body.name,
+        date: req.body.date,
+        activity: newActivity
+      });
+
+      newEvent.save(function handleDBSave(err, data){
+        if (err){
+          console.log('handleDBSave err: ', err);
+          return res.status(400).send({error: err});
+        }
+        console.log('server.js, newEvent data:');
+        console.log(data);
+        console.log('trying to redirect...');
+        res.redirect('/events/' + data._id);
+      });
 
 
-
-
+    // });
 
 });
 

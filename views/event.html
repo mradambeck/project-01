@@ -5,7 +5,7 @@
     <!-- set viewport to device width to allow responsiveness -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>NightOwl</title>
+    <title>Project 01</title>
 
     <!-- STYLESHEETS -->
 
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">
 
     <!-- jQuery from CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -25,46 +25,53 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 
     <!-- link to custom javascript file -->
-    <script src="scripts/events.js"></script>
+    <script src="../scripts/events.js"></script>
 
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-12" id="event-title"><h1 id="event-title-text">Adam's Bday Dinner - November 18th</h1></div>
-      </div>
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1 activity-title"><h3>RESTAURANT</h3></div>
-      </div>
-      <!-- Suggestion Card -->
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1 suggestion-card">
+      <div id="event-target">
+        <!-- Handlebars template -->
+        <script id="event-template" type="text/x-handlebars-template">
           <div class="row">
-            <div class="col-sm-6">
-              <h2 class="suggestion-title">Bob's Burger Joint</h2>
-            </div>
-            <div class="col-sm-3">
-              <button type="button" class="btn btn-success btn-lg pull-right vote-btn">Vote</button>
-            </div>
-            <div class="col-sm-3">
-              <div class="row vote-count">
-                <h1>0</h1>
-              </div>
-              <div class="row votes">
-                <h4>votes</h4>
-              </div>
-            </div>
+            <div class="col-xs-12" id="event-title"><h1 id="event-title-text">{{event.name}} // {{event.date}}</h1></div>
           </div>
           <div class="row">
-            <div class="col-xs-6">
-              <button type="button" class="btn btn-default btn-margin">Edit</button>
-              <button type="button" class="btn btn-danger btn-margin">Delete</button>
+            <div class="col-sm-10 col-sm-offset-1 activity-title"><h3>{{event.activity.name}}</h3></div>
+          </div>
+        </script>
+        <!-- end of handlebars -->
+      </div>
+        <!-- Suggestion Card -->
+
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 suggestion-card">
+            <div class="row">
+              <div class="col-sm-6">
+                <h2 class="suggestion-title">Bob's Burger Joint</h2>
+              </div>
+              <div class="col-sm-3">
+                <button type="button" class="btn btn-success btn-lg pull-right vote-btn">Vote</button>
+              </div>
+              <div class="col-sm-3">
+                <div class="row vote-count">
+                  <h1>0</h1>
+                </div>
+                <div class="row votes">
+                  <h4>votes</h4>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <button type="button" class="btn btn-default btn-margin">Edit</button>
+                <button type="button" class="btn btn-danger btn-margin">Delete</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row spacer"></div>
-
+        <div class="row spacer"></div>
+      <!-- </script> -->
       <!-- Add a suggestion card -->
       <div class="row">
         <div class="col-sm-10 col-sm-offset-1 suggestion-card add-suggestion-card">
