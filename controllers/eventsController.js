@@ -11,8 +11,19 @@ function index(req, res){
   });
 }
 
+// GET ONE EVENT
+function show (req, res) {
+  var id = req.params.id;
+  console.log('GET /api/events/:id:', id);
+
+  db.Event.findOne({_id: id}, function (err, foundEvent){
+    if (err) {return console.log('index error: ', err);}
+    res.json(foundEvent);
+  });
+}
 
 // export public methods here
 module.exports = {
-  index: index
+  index: index,
+  show: show
 };

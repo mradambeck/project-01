@@ -35,17 +35,7 @@ app.get('/events/:id', function homepage (req, res) {
 // JSON API Endpoints
 
 app.get('/api/events', controllers.events.index);
-
-// GET ONE EVENT
-app.get('/api/events/:id', function (req, res) {
-  var id = req.params.id;
-  console.log('GET /api/events/:id:', id);
-
-  db.Event.findOne({_id: id}, function (err, foundEvent){
-    if (err) {return console.log('index error: ', err);}
-    res.json(foundEvent);
-  });
-});
+app.get('/api/events/:id', controllers.events.show);
 
 // CREATE EVENT via form
 app.post('/events', function createEvent(req, res){
