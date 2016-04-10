@@ -38,7 +38,7 @@ app.get('/api/events/:id', controllers.events.show);
 app.get('/api/events/:id/suggestions', controllers.suggestions.showSuggestions);
 app.post('/events', controllers.events.createEvent);
 app.post('/api/events/:id/suggestions', controllers.suggestions.createSuggestion);
-// app.post('/api/events/:id/suggestions/:id', controllers.suggestions.update);
+app.post('/api/events/:id/suggestions/:id', controllers.suggestions.update);
 
 
 ////////////

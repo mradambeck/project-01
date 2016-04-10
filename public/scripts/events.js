@@ -15,6 +15,7 @@ var eventData,
 suggestionData,
 suggOnLoadData,
 $eventTarget,
+$suggestionId,
 $suggestionTarget;
 
 
@@ -85,6 +86,12 @@ $(document).ready(function() {
     // clear & close modal
     $('#modal-input').val('');
     $('#suggest-modal').modal('hide');
+  });
+
+  $('.vote-btn').on('click', function(event){
+    // event.preventDefault();
+    $suggestionId = $(this).data('suggestion-id');
+    console.log($suggestionId);
   });
 
 });
