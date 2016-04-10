@@ -34,8 +34,27 @@ function createSuggestion (req, res) {
   });
 }
 
+// // PUT '/api/events/:id/suggestions/:id'
+// function update(req, res) {
+//   console.log('updating with data', req.body);
+//   db.Suggestion.findById(req.params._id, function(err, foundSuggestion) {
+//     if(err) { console.log('suggestionController.update error', err); }
+//     // foundAlbum.artistName = req.body.artistName;
+//     // foundAlbum.name = req.body.name;
+//     // foundAlbum.releaseDate = req.body.releaseDate;
+//     // foundAlbum.save(function(err, savedAlbum) {
+//     //   if(err) { console.log('saving altered album failed'); }
+//     //   res.json(savedAlbum);
+//     // });
+//     console.log(foundSuggestion);
+//     res.json(foundSuggestion);
+//   });
+//
+// }
+
 // export public methods here
 module.exports = {
   showSuggestions: showSuggestions,
   createSuggestion: createSuggestion
+  // update: update
 };

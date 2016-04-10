@@ -52,7 +52,7 @@
           <div class="col-sm-10 col-sm-offset-1 suggestion-card">
             <div class="row">
               <div class="col-sm-6">
-                <h2 class="suggestion-title">{{suggestion.name}}</h2>
+                <h2 class="suggestion-title" data-suggestion-id="{{suggestion._id}}">{{suggestion.name}}</h2>
               </div>
               <div class="col-sm-3">
                 <button type="button" class="btn btn-success btn-lg pull-right vote-btn">Vote</button>
@@ -84,7 +84,7 @@
             <div class="col-sm-10 col-sm-offset-1 suggestion-card">
               <div class="row">
                 <div class="col-sm-6">
-                  <h2 class="suggestion-title">{{name}}</h2>
+                  <h2 class="suggestion-title" data-suggestion-id="{{_id}}">{{name}}</h2>
                 </div>
                 <div class="col-sm-3">
                   <button type="button" class="btn btn-success btn-lg pull-right vote-btn">Vote</button>
