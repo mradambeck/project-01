@@ -35,7 +35,9 @@ app.get('/events/:id', function homepage (req, res) {
 // JSON API Endpoints
 app.get('/api/events', controllers.events.index);
 app.get('/api/events/:id', controllers.events.show);
+app.get('/api/events/:id/suggestions', controllers.suggestions.showSuggestions);
 app.post('/events', controllers.events.createEvent);
+app.post('/api/events/:id/suggestions', controllers.suggestions.createSuggestion);
 
 
 ////////////

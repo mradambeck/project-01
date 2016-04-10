@@ -4,13 +4,13 @@
 
 // takes URL, grabs eventID from the end:
 var pathname = window.location.pathname,
-  pathSplit = pathname.split('/'),
-  eventID = pathSplit.pop(),
-  urlCall = ('/api/events/' + eventID); // creates API call URL
-  console.log('eventID: ', eventID);
+pathSplit = pathname.split('/'),
+eventID = pathSplit.pop(),
+urlCall = ('/api/events/' + eventID); // creates API call URL
+console.log('eventID: ', eventID);
 
 var eventData,
- $eventTarget;
+$eventTarget;
 
 
 ///////////////
@@ -34,11 +34,34 @@ $(document).ready(function() {
 
   $('#suggest-btn').on('click', function(){
     $('#suggest-modal').modal();
+    $('#suggest-submit-btn').on('click', function(e) {
+      e.preventDefault();
+      console.log('new suggestion button clicked');
+
+      // get data from modal fields
+      var formData = $('input#modal-input.form-control').serializeArray();
+      console.log('events.js, formData: ', formData);
+
+      // create path to post to
+      var suggestUrl = '/api/events/' + eventID + '/suggestions';
+      console.log('events.js, suggestUrl: ', suggestUrl);
+
+      // POST to SERVER
+      $.ajax({
+        method: 'POST',
+        url: suggestUrl,
+        data: formData,
+        success: suggestionSuccess,
+        error: suggestionError
+      });
+
+      // clear & close modal
+      $('.modal-input').val('');
+      $('#suggest-modal').modal('hide');
+    });
   });
 
-  $('#suggest-submit-btn').on('click', function(){
-    
-  });
+
 
 });
 
@@ -55,4 +78,12 @@ function handleSuccess(json){
 function handleError(err) {
   console.log('events.js: didnt render');
   $eventTarget.text('Failed to load books, is the server working?');
+}
+
+function suggestionSuccess(json){
+  console.log('suggestionSuccess: ', json);
+}
+
+function suggestionError(err){
+  console.log('events.js: suggestion error: ', err);
 }

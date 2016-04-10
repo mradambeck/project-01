@@ -24,8 +24,6 @@ function show (req, res) {
 
 // CREATE EVENT via form
 function createEvent(req, res){
-  console.log('server.js, /events:');
-  console.log(req.body);
   var newActivity = new db.Activity({
     name: req.body.activityname
   });

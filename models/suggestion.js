@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var SuggestionSchema = new Schema ({
   name: String,
-  votes: 0
+  votes: Number
 });
 
 var Suggestion = mongoose.model('Suggestion', SuggestionSchema);
