@@ -75,8 +75,41 @@
           </div>
         </div>
         <div class="row spacer"></div>
-
       </script>
+
+      <!-- Populate all Suggestions Handlebars Template -->
+      <script id="sugg-onLoad-template" type="text/x-handlebars-template">
+        {{#each suggestions}}
+          <div class="row">
+            <div class="col-sm-10 col-sm-offset-1 suggestion-card">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h2 class="suggestion-title">{{name}}</h2>
+                </div>
+                <div class="col-sm-3">
+                  <button type="button" class="btn btn-success btn-lg pull-right vote-btn">Vote</button>
+                </div>
+                <div class="col-sm-3">
+                  <div class="row vote-count">
+                    <h1>{{votes}}</h1>
+                  </div>
+                  <div class="row votes">
+                    <h4>votes</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <button type="button" class="btn btn-default btn-margin">Edit</button>
+                  <button type="button" class="btn btn-danger btn-margin">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row spacer"></div>
+        {{/each}}
+      </script>
+
     </div>
 
     <!-- Add a suggestion card -->
