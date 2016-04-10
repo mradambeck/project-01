@@ -40,34 +40,34 @@ $(document).ready(function() {
 
   $('#suggest-btn').on('click', function(){
     $('#suggest-modal').modal();
-    $('#suggest-submit-btn').on('click', function(e) {
-      e.preventDefault();
-      console.log('new suggestion button clicked');
 
-      // get data from modal fields
-      var formData = $('input#modal-input.form-control').serializeArray();
-      console.log('events.js, formData: ', formData);
-
-      // create path to post to
-      var suggestUrl = '/api/events/' + eventID + '/suggestions';
-      console.log('events.js, suggestUrl: ', suggestUrl);
-
-      // POST to SERVER
-      $.ajax({
-        method: 'POST',
-        url: suggestUrl,
-        data: formData,
-        success: suggestionSuccess,
-        error: suggestionError
-      });
-
-      // clear & close modal
-      $('.modal-input').val('');
-      $('#suggest-modal').modal('hide');
-    });
   });
 
+  $('#suggest-submit-btn').on('click', function(e) {
+    e.preventDefault();
+    console.log('new suggestion button clicked');
 
+    // get data from modal fields
+    var formData = $('input#modal-input.form-control').serializeArray();
+    console.log('events.js, formData: ', formData);
+
+    // create path to post to
+    var suggestUrl = '/api/events/' + eventID + '/suggestions';
+    console.log('events.js, suggestUrl: ', suggestUrl);
+
+    // POST to SERVER
+    $.ajax({
+      method: 'POST',
+      url: suggestUrl,
+      data: formData,
+      success: suggestionSuccess,
+      error: suggestionError
+    });
+
+    // clear & close modal
+    $('#modal-input').val('');
+    $('#suggest-modal').modal('hide');
+  });
 
 });
 
