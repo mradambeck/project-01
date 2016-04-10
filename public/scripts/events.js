@@ -10,7 +10,9 @@ urlCall = ('/api/events/' + eventID); // creates API call URL
 console.log('eventID: ', eventID);
 
 var eventData,
-$eventTarget;
+suggestionData,
+$eventTarget,
+$suggestionTarget;
 
 
 ///////////////
@@ -20,10 +22,14 @@ $eventTarget;
 $(document).ready(function() {
   console.log('page loaded, events.js ready!'); // sanity check
   $eventTarget = $('#event-target');
+  $suggestionTarget = $('#suggestions-target');
 
   // handlebars compile
-  var source = $('#event-template').html();
-  template = Handlebars.compile(source);
+  var eventSource = $('#event-template').html();
+  eventTemplate = Handlebars.compile(eventSource);
+
+  var suggestionsSource = $('#suggestions-template').html();
+  suggestionsTemplate = Handlebars.compile(suggestionsSource);
 
   $.ajax({
     method: 'GET',
@@ -66,24 +72,29 @@ $(document).ready(function() {
 });
 
 function renderEvent(){
-  var eventHtml = template({event: eventData});
+  var eventHtml = eventTemplate({event: eventData});
   $eventTarget.append(eventHtml);
+}
+
+function renderSuggestion(){
+  var suggestionHtml = suggestionsTemplate({suggestion: suggestionData});
+  $suggestionTarget.append(suggestionHtml);
 }
 
 function handleSuccess(json){
   eventData = json;
   renderEvent();
 }
-
 function handleError(err) {
   console.log('events.js: didnt render');
-  $eventTarget.text('Failed to load books, is the server working?');
+  $eventTarget.text('Failed to render Event');
 }
 
 function suggestionSuccess(json){
-  console.log('suggestionSuccess: ', json);
+  suggestionData = json;
+  renderSuggestion();
 }
-
 function suggestionError(err){
   console.log('events.js: suggestion error: ', err);
+  $suggestionTarget.text('Failed to render Suggestions');
 }

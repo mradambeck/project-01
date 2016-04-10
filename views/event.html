@@ -1,61 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <!-- set viewport to device width to allow responsiveness -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <!-- set viewport to device width to allow responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Project 01</title>
+  <title>Project 01</title>
 
-    <!-- STYLESHEETS -->
+  <!-- STYLESHEETS -->
 
-    <!-- Bootstrap CSS from CDN -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Bootstrap CSS from CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="../styles/style.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="../styles/style.css">
 
-    <!-- jQuery from CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <!-- jQuery from CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-    <!-- Bootstrap Javascript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <!-- Bootstrap Javascript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-    <!-- Handlebars -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <!-- Handlebars -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 
-    <!-- link to custom javascript file -->
-    <script src="../scripts/events.js"></script>
+  <!-- link to custom javascript file -->
+  <script src="../scripts/events.js"></script>
 
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div id="event-target">
-        <!-- Handlebars template -->
-        <script id="event-template" type="text/x-handlebars-template">
-          <div class="row">
-            <div class="col-xs-12" id="event-title"><h1 id="event-title-text">{{event.name}} // {{event.date}}</h1></div>
-          </div>
-          <div class="row">
-            <div class="col-sm-10 col-sm-offset-1 activity-title"><h3>{{event.activity.name}}</h3></div>
-          </div>
-        </script>
-        <!-- end of handlebars -->
-      </div>
-        <!-- Suggestion Card -->
+</head>
+<body>
+  <div class="container-fluid">
+    <div id="event-target">
+      <!-- Event Handlebars template -->
+      <script id="event-template" type="text/x-handlebars-template">
+        <div class="row">
+          <div class="col-xs-12" id="event-title"><h1 id="event-title-text">{{event.name}} // {{event.date}}</h1></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 activity-title"><h3>{{event.activity.name}}</h3></div>
+        </div>
+      </script>
+      <!-- end of handlebars -->
+    </div>
+
+    <!-- Suggestion Card -->
+    <div id="suggestions-target">
+      <!-- Suggestions Handlebars template -->
+      <script id="suggestions-template" type="text/x-handlebars-template">
 
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1 suggestion-card">
             <div class="row">
               <div class="col-sm-6">
-                <h2 class="suggestion-title">Bob's Burger Joint</h2>
+                <h2 class="suggestion-title">{{suggestion.name}}</h2>
               </div>
               <div class="col-sm-3">
                 <button type="button" class="btn btn-success btn-lg pull-right vote-btn">Vote</button>
               </div>
               <div class="col-sm-3">
                 <div class="row vote-count">
-                  <h1>0</h1>
+                  <h1>{{suggestion.votes}}</h1>
                 </div>
                 <div class="row votes">
                   <h4>votes</h4>
@@ -71,34 +75,37 @@
           </div>
         </div>
         <div class="row spacer"></div>
-      <!-- </script> -->
-      <!-- Add a suggestion card -->
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1 suggestion-card add-suggestion-card">
-          <button type="button" class="btn btn-primary btn-lg" id="suggest-btn">Add a New Suggestion</button>
-        </div>
+
+      </script>
+    </div>
+
+    <!-- Add a suggestion card -->
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 suggestion-card add-suggestion-card">
+        <button type="button" class="btn btn-primary btn-lg" id="suggest-btn">Add a New Suggestion</button>
       </div>
+    </div>
 
-      <div class="row spacer"></div>
+    <div class="row spacer"></div>
 
-      <!-- end voting button -->
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-          <button type="button" class="btn btn-danger btn-lg pull-right">End Voting</button>
-        </div>
+    <!-- end voting button -->
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <button type="button" class="btn btn-danger btn-lg pull-right">End Voting</button>
       </div>
+    </div>
 
-      <!-- Main Modal -->
-      <div class="modal fade" tabindex="-1" role="dialog" id="suggest-modal">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-body">
-              <div class="modal-title">SUGGEST A NEW DESTINATION</div>
-              <form id="suggest-form">
-                <div class="form-group">
-                  <input type="text" class="form-control" name="name" id="modal-input" placeholder="ie, Chevy's">
-                  <input class="btn btn-success btn-block" id="suggest-submit-btn" type="submit">
-                </div>
+    <!-- Main Modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="suggest-modal">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="modal-title">SUGGEST A NEW DESTINATION</div>
+            <form id="suggest-form">
+              <div class="form-group">
+                <input type="text" class="form-control" name="name" id="modal-input" placeholder="ie, Chevy's">
+                <input class="btn btn-success btn-block" id="suggest-submit-btn" type="submit">
+              </div>
             </div>
           </div>
         </div>
@@ -106,4 +113,4 @@
 
     </div>
   </body>
-</html>
+  </html>
