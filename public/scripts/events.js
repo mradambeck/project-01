@@ -199,7 +199,6 @@ function voteError(){
 
 // Deleting Suggestions
 function deleteSuccess(){
-  console.log("deleteSuccess!");
   var cardId = '#' + $deleteButtonId + '-card';
   var spacerId = '#' + $deleteButtonId + '-spacer';
   $(cardId).hide("slow");
@@ -212,10 +211,15 @@ function deleteError(err){
 // End Voting
 
 function endVotingSuccess(){
-  console.log('endVotingSuccess!');
+  votingClosed();
 }
 function endVotingError(){
   console.log('endVotingError!');
+}
+
+function votingClosed(){
+  console.log('voting closed!');
+  $('#voting-closed-modal').modal();
 }
 
 // Make a string Uppercase
