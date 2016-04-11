@@ -48,9 +48,8 @@
 
     <!-- Suggestion Card -->
     <div id="suggestions-target">
-      <!-- Suggestions Handlebars template -->
+      <!-- Suggestion Handlebars template -->
       <script id="suggestions-template" type="text/x-handlebars-template">
-
         <div class="row">
           <div class="col-sm-10 col-sm-offset-1 suggestion-card" id="{{suggestion._id}}-card">
             <div class="row">
@@ -58,7 +57,7 @@
                 <h2 class="suggestion-title">{{suggestion.name}}</h2>
               </div>
               <div class="col-sm-3">
-                <button type="button" class="btn btn-success btn-lg pull-right vote-btn" data-suggestion-id="{{suggestion._id}}">Vote</button>
+                <button type="button" class="btn btn-success btn-lg pull-right vote-btn" data-suggestion-id="{{suggestion._id}}">VOTE</button>
               </div>
               <div class="col-sm-3">
                 <div class="row vote-count">
@@ -71,8 +70,7 @@
             </div>
             <div class="row">
               <div class="col-xs-6">
-                <!-- <button type="button" class="btn btn-default btn-margin">Edit</button> -->
-                <button type="button" class="btn btn-danger btn-margin delete-btn" data-suggestion-id="{{suggestion._id}}">Delete</button>
+                <button type="button" class="btn btn-danger btn-margin delete-btn" data-suggestion-id="{{suggestion._id}}">DELETE</button>
               </div>
             </div>
           </div>
@@ -90,7 +88,7 @@
                   <h2 class="suggestion-title">{{name}}</h2>
                 </div>
                 <div class="col-sm-3">
-                  <button type="button" class="btn btn-success btn-lg pull-right vote-btn" data-suggestion-id="{{_id}}">Vote</button>
+                  <button type="button" class="btn btn-success btn-lg pull-right vote-btn" data-suggestion-id="{{_id}}">VOTE</button>
                 </div>
                 <div class="col-sm-3">
                   <div class="row vote-count">
@@ -99,12 +97,17 @@
                   <div class="row votes">
                     <h4>votes</h4>
                   </div>
+                  <!-- <div class="row">
+                    <div class="col-xs-12">
+                      <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+                    </div>
+                  </div> -->
                 </div>
               </div>
               <div class="row">
                 <div class="col-xs-6">
                   <!-- <button type="button" class="btn btn-default btn-margin">Edit</button> -->
-                  <button type="button" class="btn btn-danger btn-margin delete-btn" data-suggestion-id="{{_id}}">Delete</button>
+                  <button type="button" class="btn btn-danger btn-margin delete-btn" data-suggestion-id="{{_id}}">DELETE</button>
                 </div>
               </div>
             </div>

@@ -1,5 +1,9 @@
+html, body {
+  height: 100%;
+}
 body {
   background-color: #ededed;
+  /*height: 100%;*/
   background-image: url("/images/grid-bg.png");
   color: #303030;
   font-family: 'Ruda', sans-serif;
@@ -32,9 +36,12 @@ p {
 
 .activity-title {
   text-align: center;
+  /*font-family: 'Josefin Sans', sans-serif;*/
+  /*font-weight: 100;*/
 }
 
 .add-suggestion-card {
+
   text-align: center;
   height: 100px;
 }
@@ -44,7 +51,8 @@ p {
 }
 
 .btn {
-  border-radius: 0;
+  border-radius: 3px;
+  font-weight: 100
 }
 
 .btn-danger {
@@ -61,17 +69,20 @@ p {
 }
 
 .btn-primary {
-  background-color: #4b668a;
-  border-color: #4b668a;
+  background-color: #8a9cb4;
+  border-color: #8a9cb4;
   margin-top: 24px;
 }
 
 .btn-primary:hover  {
-  background-color: #37557D;
+  background-color: #7b8ba0;
+  border-color: #7b8ba0;
 }
 
 .btn-success {
-  background-color: #3c3c3b;
+  /*background-color: #3c3c3b;*/
+  color: #2d2d28;
+  background-color: transparent;
   border-color: #2d2d28;
 }
 
@@ -80,9 +91,19 @@ p {
   border-color: #2d2d28;
 }
 
-.btn-success:active {
-  background-color: #000;
-  border-color: #2d2d28;
+.btn-success:active:focus {
+  background-color: transparent;
+  border-color: #000;
+}
+.btn-success:focus {
+  background-color: transparent;
+  border-color: #000;
+}
+
+.card-title {
+  background: #696966;
+  background: -webkit-linear-gradient(left top, #604846, #989897);
+  color: #ffffff;
 }
 
 .form-block {
@@ -109,6 +130,8 @@ p {
 
 .suggestion-card {
   background-color: #b0dec8;
+  /*background: linear-gradient(to bottom right, #ff9ef5, #34bdb5);*/
+
   opacity: 0.9;
   box-shadow: 3px 3px 3px #e0e0e0;
 }
@@ -126,10 +149,16 @@ p {
 }
 
 #event-title {
-  background-color: #696966;
+  background: #696966;
+  background: -webkit-linear-gradient(left top, #604846, #989897);
   color: #ffffff;
   opacity: 0.5;
   text-align: center;
+}
+
+#event-title-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 100;
 }
 
 #intro-title {
