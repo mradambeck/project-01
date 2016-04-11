@@ -30,6 +30,3 @@ This app allows you to create an idea for an event, but let your friends fill in
 - Schedule activities
 - Only allow event to be seen by logged in users whom have been given permission to views
 - Allow users to comment on Activities
-
-
-##Screenshot(s) (optional)
