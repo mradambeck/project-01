@@ -8,7 +8,8 @@ var express = require('express'),
   db = require('./models'),
   app = express(),
   bodyParser = require('body-parser'),
-  controllers = require('./controllers');
+  controllers = require('./controllers')
+;
 
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));

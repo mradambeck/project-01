@@ -7,7 +7,9 @@ function showSuggestions (req, res) {
     if (err) {console.log('eventsController, show err: ', err);
       return res.status(404).send({error: err});
     }
-    var sorted_suggestions = foundEvent.activity.suggestions.sort(function(a,b){return a.votes <= b.votes;});
+    var sorted_suggestions = foundEvent.activity.suggestions.sort(function(a,b){
+      return a.votes <= b.votes;
+    });
     res.json(sorted_suggestions);
   });
 }
@@ -28,6 +30,7 @@ function showOneSuggestion (req, res) {
   });
 }
 
+// Create Suggestion
 // POST '/api/events/:id/suggestions/'
 function createSuggestion (req, res) {
   var newSuggestion = new db.Suggestion({
@@ -51,7 +54,7 @@ function createSuggestion (req, res) {
   });
 }
 
-// Increment votes
+// Increment votes / Update Suggestions
 // PUT '/api/events/:id/suggestions/:suggid'
 function update (req, res) {
   db.Event.findOne({_id: req.params.id}, function (err, foundEvent){
@@ -73,6 +76,7 @@ function update (req, res) {
   });
 }
 
+// DELETE '/api/events/:id/suggestions/:suggid'
 function erase(req, res) {
   db.Event.findOne({ _id: req.params.id }, function(err, foundEvent){
     console.log('erase findOne db.Event');
@@ -93,7 +97,7 @@ function erase(req, res) {
   });
 }
 
-// export public methods here
+// export public methods
 module.exports = {
   showSuggestions: showSuggestions,
   showOneSuggestion: showOneSuggestion,
