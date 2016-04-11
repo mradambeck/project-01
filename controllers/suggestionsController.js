@@ -11,6 +11,21 @@ function showSuggestions (req, res) {
   });
 }
 
+function showOneSuggestion (req, res) {
+  db.Event.findOne({_id: req.params.id}, function (err, foundEvent){
+    console.log('findOne db.Event ');
+    if (err) {console.log('suggestionsController, showOne err: ', err);
+      return res.status(400).send({error: err});
+    }
+    var suggestPath = foundEvent.activity.suggestions;
+    var actualItem = suggestPath.id(req.params.suggid);
+    console.log('actualItem: ', actualItem);
+
+    res.json(actualItem);
+    });
+  // });
+}
+
 // POST '/api/events/:id/suggestions/'
 function createSuggestion (req, res) {
   var newSuggestion = new db.Suggestion({
@@ -55,6 +70,7 @@ function createSuggestion (req, res) {
 // export public methods here
 module.exports = {
   showSuggestions: showSuggestions,
+  showOneSuggestion: showOneSuggestion,
   createSuggestion: createSuggestion
   // update: update
 };

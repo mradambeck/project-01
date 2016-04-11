@@ -36,6 +36,7 @@ app.get('/events/:id', function homepage (req, res) {
 app.get('/api/events', controllers.events.index);
 app.get('/api/events/:id', controllers.events.show);
 app.get('/api/events/:id/suggestions', controllers.suggestions.showSuggestions);
+app.get('/api/events/:id/suggestions/:suggid', controllers.suggestions.showOneSuggestion);
 app.post('/events', controllers.events.createEvent);
 app.post('/api/events/:id/suggestions', controllers.suggestions.createSuggestion);
 // app.post('/api/events/:id/suggestions/:id', controllers.suggestions.update);
