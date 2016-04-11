@@ -1,7 +1,9 @@
 body {
-  background-image: url("/images/geometry.png");
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
+  background-color: #ededed;
+  background-image: url("/images/grid-bg.png");
+  color: #303030;
+  font-family: 'Ruda', sans-serif;
+  font-weight: 300;
 }
 
 div {
@@ -9,11 +11,22 @@ div {
 }
 
 h1 {
-  font-weight: 700;
+  font-weight: 600;
+}
+
+input {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+}
+
+label {
+  font-size: 17px;
+  font-weight: 400;
 }
 
 p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 18px;
   font-weight: 400;
 }
 
@@ -30,13 +43,46 @@ p {
   padding-left: 20px;
 }
 
+.btn {
+  border-radius: 0;
+}
+
+.btn-danger {
+  background-color: #e63f37;
+}
+
+.btn-danger:hover  {
+  background-color: #b8322c;
+}
+
 .btn-margin {
   margin-left: 5px;
   margin-bottom: 15px;
 }
 
 .btn-primary {
+  background-color: #4b668a;
+  border-color: #4b668a;
   margin-top: 24px;
+}
+
+.btn-primary:hover  {
+  background-color: #37557D;
+}
+
+.btn-success {
+  background-color: #3c3c3b;
+  border-color: #2d2d28;
+}
+
+.btn-success:hover {
+  background-color: #2d2d28;
+  border-color: #2d2d28;
+}
+
+.btn-success:active {
+  background-color: #000;
+  border-color: #2d2d28;
 }
 
 .form-block {
@@ -45,9 +91,8 @@ p {
 }
 
 .intro-card {
-  background-color: #e7f2ef;
-  /*border: 1px solid #000000;*/
-  border-radius: 10px;
+  background-color: #b0dec8;
+  opacity: 0.9;
   box-shadow: 3px 3px 3px #e0e0e0;
   padding-bottom: 40px;
 }
@@ -63,9 +108,8 @@ p {
 }
 
 .suggestion-card {
-  background-color: #e7f2ef;
-  /*border: 1px solid #000000;*/
-  border-radius: 10px;
+  background-color: #b0dec8;
+  opacity: 0.9;
   box-shadow: 3px 3px 3px #e0e0e0;
 }
 
@@ -82,10 +126,10 @@ p {
 }
 
 #event-title {
-  background-color: #f0f0f0;
-  /*border-bottom: 1px solid #000000;*/
+  background-color: #696966;
+  color: #ffffff;
+  opacity: 0.5;
   text-align: center;
-  /*box-shadow: 3px 3px 3px #cfcfcf;*/
 }
 
 #intro-title {
