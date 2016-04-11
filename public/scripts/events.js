@@ -172,7 +172,7 @@ function suggOnLoadSuccess(json){
 function suggOnLoadError(err){
   console.log('events.js: suggOnLoad error: ', err);
   $suggestionTarget.text('Failed to render Suggestions');
-} 
+}
 
 // Updating votes in DOM
 function voteSuccess(voteCount){
@@ -194,4 +194,8 @@ function deleteSuccess(){
 }
 function deleteError(err){
   console.log("deleteError! ", err);
+}
+
+function toUpperCase(str) {
+    return str.toUpperCase();
 }

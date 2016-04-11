@@ -80,9 +80,9 @@ p {
 }
 
 .btn-success {
-  /*background-color: #3c3c3b;*/
-  color: #2d2d28;
-  background-color: transparent;
+  background-color: #3c3c3b;
+  /*color: #2d2d28;*/
+  /*background-color: transparent;*/
   border-color: #2d2d28;
 }
 
