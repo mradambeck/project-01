@@ -68,7 +68,10 @@ function update (req, res) {
       if(err) { console.log('adding to votes failed');
         return res.status(404).send({error: err});
       }
-      res.json(savedEvent);
+      var path = savedEvent.activity.suggestions;
+      var voteCount = path.id(req.params.suggid).votes;
+      console.log('voteCount: ', voteCount);
+      res.json(voteCount);
     });
   });
 }

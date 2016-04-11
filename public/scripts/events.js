@@ -11,7 +11,8 @@ suggUrlCall = ('/api/events/' + eventID + '/suggestions'); // creates API call f
 console.log('eventID: ', eventID);
 console.log('suggUrlCall: ', suggUrlCall);
 
-var eventData,
+var elementId,
+eventData,
 suggestionData,
 suggOnLoadData,
 $eventTarget,
@@ -19,6 +20,7 @@ $suggestionId,
 $suggestionTarget,
 $voteButton;
 
+var elementIdStart = '#';
 
 ///////////////
 // DOC READY //
@@ -118,6 +120,7 @@ function renderSuggestions(){
     event.preventDefault();
     console.log('vote button clicked');
     $suggestionId = $(this).data('suggestion-id');
+    $voteButton = $(this);
     console.log($suggestionId);
     var voteUrl = (suggUrlCall + '/' + $suggestionId);
     console.log(voteUrl);
@@ -162,7 +165,14 @@ function suggOnLoadError(err){
 }
 
 // Updating votes in DOM
-function voteSuccess(){
+function voteSuccess(voteCount){
+  console.log('voteCount: ', voteCount);
+  console.log('suggestionId: ', $suggestionId);
+
+  elementId = elementIdStart + $suggestionId;
+  console.log('elementId: ', elementId);
+  // elementId.text(voteCount);
+  $(elementId).text(voteCount);
   console.log('voteSuccess!');
 }
 function voteError(){
