@@ -60,23 +60,17 @@ function update (req, res) {
     }
     var suggestPath = foundEvent.activity.suggestions;
     var actualItem = suggestPath.id(req.params.suggid);
-    console.log('update actualItem: ', actualItem);
-    console.log('actualItem.votes: ', actualItem.votes);
     actualItem.votes = actualItem.votes + 1;
-    console.log('actualItem.votes plus one: ', actualItem.votes);
     foundEvent.save(function(err, savedEvent){
       if(err) { console.log('adding to votes failed');
         return res.status(404).send({error: err});
       }
       var path = savedEvent.activity.suggestions;
       var voteCount = path.id(req.params.suggid).votes;
-      console.log('voteCount: ', voteCount);
       res.json(voteCount);
     });
   });
 }
-
-
 
 
 // export public methods here

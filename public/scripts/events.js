@@ -8,8 +8,7 @@ pathSplit = pathname.split('/'),
 eventID = pathSplit.pop(),
 urlCall = ('/api/events/' + eventID); // creates API call URL
 suggUrlCall = ('/api/events/' + eventID + '/suggestions'); // creates API call for Suggestions URL
-console.log('eventID: ', eventID);
-console.log('suggUrlCall: ', suggUrlCall);
+console.log('URL call for suggestions: ', suggUrlCall);
 
 var elementId,
 eventData,
@@ -67,15 +66,12 @@ $(document).ready(function() {
   // Suggestions submission handling
   $('#suggest-submit-btn').on('click', function(e) {
     e.preventDefault();
-    console.log('new suggestion button clicked');
 
     // get data from modal fields
     var formData = $('input#modal-input.form-control').serializeArray();
-    console.log('events.js, formData: ', formData);
 
     // create path to post to
     var suggestUrl = '/api/events/' + eventID + '/suggestions';
-    console.log('events.js, suggestUrl: ', suggestUrl);
 
     // POST to SERVER
     $.ajax({
@@ -104,26 +100,29 @@ $(document).ready(function() {
 function renderEvent(){
   var eventHtml = eventTemplate({event: eventData});
   $eventTarget.append(eventHtml);
+
 }
 
 // handlebars rendering of a new suggestion card
 function renderSuggestion(){
   var suggestionHtml = suggestionsTemplate({suggestion: suggestionData});
   $suggestionTarget.append(suggestionHtml);
+  vote();
 }
 
 // handlebars rendering of all suggestions on load
 function renderSuggestions(){
   var suggestionsHtml = suggOnLoadTemplate({suggestions: suggOnLoadData});
   $suggestionTarget.append(suggestionsHtml);
+  vote();
+}
+
+function vote(){
   $('.vote-btn').on('click', function(event){
     event.preventDefault();
-    console.log('vote button clicked');
     $suggestionId = $(this).data('suggestion-id');
     $voteButton = $(this);
-    console.log($suggestionId);
     var voteUrl = (suggUrlCall + '/' + $suggestionId);
-    console.log(voteUrl);
 
     $.ajax({
       method: 'PUT',
@@ -166,15 +165,10 @@ function suggOnLoadError(err){
 
 // Updating votes in DOM
 function voteSuccess(voteCount){
-  console.log('voteCount: ', voteCount);
-  console.log('suggestionId: ', $suggestionId);
-
   elementId = elementIdStart + $suggestionId;
-  console.log('elementId: ', elementId);
-  // elementId.text(voteCount);
   $(elementId).text(voteCount);
-  console.log('voteSuccess!');
 }
 function voteError(){
   console.log('voteError!');
+  $suggestionTarget.text('Failed to render vote!');
 }
