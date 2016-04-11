@@ -39,6 +39,8 @@ $(document).ready(function() {
   suggestionsTemplate = Handlebars.compile(suggestionsSource);
   var suggOnLoadSource = $('#sugg-onLoad-template').html();
   suggOnLoadTemplate = Handlebars.compile(suggOnLoadSource);
+  var closedModalSource = $('#voting-closed-template').html();
+  closedModalTemplate = Handlebars.compile(closedModalSource);
 
 
   // Populate Events on load
@@ -125,6 +127,11 @@ function renderSuggestions(){
   erase();
 }
 
+// handlebars rendering of Closed Modal
+function renderClosedModal(){
+  var closedHtml = closedModalTemplate({event: eventData});
+  $('#closed-modal-target').append(closedHtml);
+}
 
 // Voting
 function vote(){
@@ -210,7 +217,8 @@ function deleteError(err){
 
 // End Voting
 
-function endVotingSuccess(){
+function endVotingSuccess(json){
+  eventData = json;
   votingClosed();
 }
 function endVotingError(){
@@ -220,6 +228,7 @@ function endVotingError(){
 function votingClosed(){
   console.log('voting closed!');
   $('#voting-closed-modal').modal();
+  renderClosedModal();
 }
 
 // Make a string Uppercase

@@ -56,6 +56,9 @@ function setVotingFalse (req, res) {
       if(err) { console.log('adding to votes failed');
         return res.status(404).send({error: err});
       }
+    var sorted_suggestions = foundEvent.activity.suggestions.sort(function(a,b){
+      return a.votes <= b.votes;
+    });
       res.json(savedEvent);
     });
   });

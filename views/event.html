@@ -147,17 +147,20 @@
               <div class="modal-title" id="closed-modal"><h1>VOTING CLOSED</h1></div>
               <hr />
             </div>
-            <!-- <script id="voting-closed-template" type="text/x-handlebars-template"> -->
-              <div class="row">
-                <div class="col-xs-10 col-xs-offset-1">
-                  <div class="row"><h1 id="closed-modal-title">Adam's birthday // November 18th</h1></div>
-                  <div class="row"><h2 id="closed-modal-winner">Starline Social Club<h2></div>
-                  <div class="row"><h3 class="closed-modal-losers">Bar 355</h3></div>
-                  <div class="row"><h3 class="closed-modal-losers">Fauna</h3></div>
-                  <div class="row"><h3 class="closed-modal-losers">Drexl</h3></div>
-                </div>
-              </row>
-            <!-- </script> -->
+            <div id="closed-modal-target">
+              <!-- Handlebars template -->
+              <script id="voting-closed-template" type="text/x-handlebars-template">
+                <div class="row">
+                  <div class="col-xs-10 col-xs-offset-1">
+                    <div class="row"><h1 id="closed-modal-title">{{event.name}} // {{event.date}}</h1></div>
+                    {{#each event.activity.suggestions}}
+                    <div class="row"><h3 class="closed-modal-suggestions">{{name}}: {{votes}} votes</h3></div>
+                    {{/each}}
+                  </div>
+                </row>
+              </script>
+
+            </div>
           </div>
         </div>
 
