@@ -179,6 +179,10 @@ p {
   text-align: center;
 }
 
+#end-voting-btn {
+  margin-bottom: 30px;
+}
+
 #event-title {
   background: #696966;
   background: linear-gradient(left top, #604846, #989897);

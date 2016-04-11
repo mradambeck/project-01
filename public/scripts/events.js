@@ -83,6 +83,10 @@ $(document).ready(function() {
     $('#suggest-modal').modal('hide');
   });
 
+  $('#end-voting-btn').on('click', function(){
+    
+  });
+
 });
 
 

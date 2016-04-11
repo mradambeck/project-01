@@ -5,6 +5,7 @@ var Activity = require('./activity');
 var EventSchema = new Schema ({
   name: String,
   date: String,
+  votingAllowed: Boolean,
   activity: Activity.schema
 });
 
