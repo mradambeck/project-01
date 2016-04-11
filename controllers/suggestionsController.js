@@ -5,10 +5,11 @@ var db = require('../models');
 function showSuggestions (req, res) {
   db.Event.findOne({_id: req.params.id}, function (err, foundEvent){
     if (err) {console.log('eventsController, show err: ', err);
-    return res.status(404).send({error: err});
-  }
-  res.json(foundEvent.activity.suggestions);
-});
+      return res.status(404).send({error: err});
+    }
+    var sorted_suggestions = foundEvent.activity.suggestions.sort(function(a,b){return a.votes <= b.votes;});
+    res.json(sorted_suggestions);
+  });
 }
 
 //Get one Suggestion:
