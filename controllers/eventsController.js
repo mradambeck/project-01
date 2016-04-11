@@ -1,6 +1,6 @@
 var db = require('../models');
 
-//get all events
+// GET /api/events (get all events)
 function index(req, res){
   //find events
   db.Event.find(function (err, events){
@@ -11,7 +11,7 @@ function index(req, res){
   });
 }
 
-// GET ONE EVENT
+// GET /api/events/:id (get one event)
 function show (req, res) {
   var id = req.params.id;
 
@@ -22,7 +22,7 @@ function show (req, res) {
   });
 }
 
-// CREATE EVENT via form
+// POST /events (create event via form)
 function createEvent(req, res){
   var newActivity = new db.Activity({
     name: req.body.activityname
@@ -31,6 +31,7 @@ function createEvent(req, res){
   var newEvent = new db.Event({
     name: req.body.name,
     date: req.body.date,
+    votingAllowed: req.body.votingAllowed,
     activity: newActivity
   });
 
@@ -43,9 +44,27 @@ function createEvent(req, res){
   });
 }
 
+// PUT /api/events/:id (update event)
+function setVotingFalse (req, res) {
+  db.Event.findOne({_id: req.params.id}, function (err, foundEvent){
+    console.log('setVotingFalse');
+    if (err) {console.log('eventsController, setVotingFalse err: ', err);
+      return res.status(404).send({error: err});
+    }
+    foundEvent.votingAllowed = false;
+    foundEvent.save(function(err, savedEvent){
+      if(err) { console.log('adding to votes failed');
+        return res.status(404).send({error: err});
+      }
+      res.json(savedEvent);
+    });
+  });
+}
+
 // export public methods here
 module.exports = {
   index: index,
   show: show,
-  createEvent: createEvent
+  createEvent: createEvent,
+  setVotingFalse: setVotingFalse
 };

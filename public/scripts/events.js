@@ -84,7 +84,14 @@ $(document).ready(function() {
   });
 
   $('#end-voting-btn').on('click', function(){
-    
+
+    $.ajax({
+      method: 'PUT',
+      url: urlCall,
+      success: endVotingSuccess,
+      error: endVotingError
+    });
+
   });
 
 });
@@ -202,6 +209,16 @@ function deleteError(err){
   console.log("deleteError! ", err);
 }
 
+// End Voting
+
+function endVotingSuccess(){
+  console.log('endVotingSuccess!');
+}
+function endVotingError(){
+  console.log('endVotingError!');
+}
+
+// Make a string Uppercase
 function toUpperCase(str) {
     return str.toUpperCase();
 }

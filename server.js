@@ -36,6 +36,7 @@ app.get('/api/events/:id/suggestions/:suggid', controllers.suggestions.showOneSu
 app.post('/events', controllers.events.createEvent);
 app.post('/api/events/:id/suggestions', controllers.suggestions.createSuggestion);
 app.put('/api/events/:id/suggestions/:suggid', controllers.suggestions.update);
+app.put('/api/events/:id', controllers.events.setVotingFalse);
 app.delete('/api/events/:id/suggestions/:suggid', controllers.suggestions.erase);
 
 ////////////
