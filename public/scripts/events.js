@@ -83,6 +83,7 @@ $(document).ready(function() {
     $('#suggest-modal').modal('hide');
   });
 
+
 });
 
 
@@ -94,6 +95,8 @@ $(document).ready(function() {
 function renderEvent(){
   var eventHtml = eventTemplate({event: eventData});
   $eventTarget.append(eventHtml);
+  var txt = $('.activity-text').text().toUpperCase();
+  $('.activity-text').text(txt);
 }
 
 // handlebars rendering of a new suggestion card
