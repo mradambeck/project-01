@@ -18,8 +18,13 @@ function show (req, res) {
   db.Event.findOne({_id: id}, function (err, foundEvent){
     if (err) {console.log('eventsController, show err: ', err);
     return res.status(400).send({error: err});}
+    var sorted_suggestions = foundEvent.activity.suggestions.sort(function(a,b){
+      return a.votes <= b.votes;
+    });
     res.json(foundEvent);
   });
+
+
 }
 
 // POST /events (create event via form)

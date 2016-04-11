@@ -109,8 +109,8 @@ function renderEvent(){
   $eventTarget.append(eventHtml);
   var txt = $('.activity-text').text().toUpperCase();
   $('.activity-text').text(txt);
+  console.log(eventData.votingAllowed);
 }
-
 // handlebars rendering of a new suggestion card
 function renderSuggestion(){
   var suggestionHtml = suggestionsTemplate({suggestion: suggestionData});
@@ -118,7 +118,6 @@ function renderSuggestion(){
   vote();
   erase();
 }
-
 // handlebars rendering of all suggestions on load
 function renderSuggestions(){
   var suggestionsHtml = suggOnLoadTemplate({suggestions: suggOnLoadData});
@@ -126,7 +125,6 @@ function renderSuggestions(){
   vote();
   erase();
 }
-
 // handlebars rendering of Closed Modal
 function renderClosedModal(){
   var closedHtml = closedModalTemplate({event: eventData});
@@ -168,6 +166,10 @@ function erase(){
 function handleSuccess(json){
   eventData = json;
   renderEvent();
+  console.log(eventData);
+  if (eventData.votingAllowed === false){
+    endVotingSuccess(eventData);
+  }
 }
 function handleError(err) {
   console.log('events.js: didnt render');
@@ -188,6 +190,7 @@ function suggestionError(err){
 function suggOnLoadSuccess(json){
   suggOnLoadData = json;
   renderSuggestions();
+
 }
 function suggOnLoadError(err){
   console.log('events.js: suggOnLoad error: ', err);
