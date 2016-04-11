@@ -107,7 +107,9 @@ function renderEvent(){
 function renderSuggestion(){
   var suggestionHtml = suggestionsTemplate({suggestion: suggestionData});
   $suggestionTarget.append(suggestionHtml);
+  console.log('renderSuggestion');
   vote();
+  console.log('vote called');
 }
 
 // handlebars rendering of all suggestions on load
@@ -115,10 +117,12 @@ function renderSuggestions(){
   var suggestionsHtml = suggOnLoadTemplate({suggestions: suggOnLoadData});
   $suggestionTarget.append(suggestionsHtml);
   vote();
+  console.log('vote called');
 }
 
 function vote(){
   $('.vote-btn').on('click', function(event){
+    console.log('vote');
     event.preventDefault();
     $suggestionId = $(this).data('suggestion-id');
     $voteButton = $(this);

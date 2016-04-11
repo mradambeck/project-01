@@ -60,7 +60,7 @@ function update (req, res) {
     }
     var suggestPath = foundEvent.activity.suggestions;
     var actualItem = suggestPath.id(req.params.suggid);
-    actualItem.votes = actualItem.votes + 1;
+    actualItem.votes++;
     foundEvent.save(function(err, savedEvent){
       if(err) { console.log('adding to votes failed');
         return res.status(404).send({error: err});
