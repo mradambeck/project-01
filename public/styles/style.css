@@ -34,6 +34,10 @@ p {
   font-weight: 400;
 }
 
+.activity-text  {
+  font-size: 18px;
+}
+
 .activity-title {
   text-align: center;
   /*font-family: 'Josefin Sans', sans-serif;*/
@@ -109,7 +113,8 @@ p {
 .delete-btn {
   border-radius: 0px;
   position: absolute;
-  bottom: -96px;
+  bottom: -159px;
+  opacity: .8;
 }
 
 .delete-col {
@@ -123,6 +128,7 @@ p {
 
 .intro-card {
   background-color: #b0dec8;
+  background: linear-gradient(to bottom right, #b0ded6, #b7e1b8);
   opacity: 0.9;
   box-shadow: 3px 3px 3px #e0e0e0;
   padding-bottom: 40px;
@@ -140,19 +146,20 @@ p {
 
 .suggestion-card {
   background-color: #b0dec8;
-  /*background: linear-gradient(to bottom right, #ff9ef5, #34bdb5);*/
-
+  background: linear-gradient(to bottom right, #b0ded6, #b7e1b8);
   opacity: 0.9;
   box-shadow: 3px 3px 3px #e0e0e0;
+  position: relative;
 }
 
 .suggestion-title  {
   margin-left: 30px;
+  font-size: 45px;
 }
 
 .title-col {
   padding: 0px;
-  position: relative;
+
 }
 
 .vote-btn {
@@ -161,7 +168,7 @@ p {
 }
 
 .vote-col {
- background-color: #9ed6bb;
+ background: #c2e6d5;
 }
 
 .vote-count{
@@ -174,7 +181,7 @@ p {
 
 #event-title {
   background: #696966;
-  background: -webkit-linear-gradient(left top, #604846, #989897);
+  background: linear-gradient(left top, #604846, #989897);
   color: #ffffff;
   opacity: 0.5;
   text-align: center;
@@ -186,8 +193,10 @@ p {
 }
 
 #intro-title {
+  color: #fff;
   text-align: center;
   margin-top: 15px;
+  font-size: 50px;
 }
 
 #suggest-modal div.modal-body{
@@ -201,4 +210,18 @@ p {
 
 form #event-title {
   text-align: left;
+}
+
+@media (max-width: 758px){
+  .blurb {
+    margin-top: 100px;
+  }
+  .delete-btn {
+    display: none;
+  }
+
+  .form-block  {
+    padding-right: 15px;
+  }
+
 }

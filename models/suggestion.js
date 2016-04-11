@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-
+ 
 var SuggestionSchema = new Schema ({
   name: String,
   votes: Number

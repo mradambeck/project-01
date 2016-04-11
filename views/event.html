@@ -54,10 +54,10 @@
             <div class="col-sm-10 col-sm-offset-1 suggestion-card" id="{{suggestion._id}}-card">
               <div class="row">
                 <div class="col-sm-6 title-col">
-                  <h2 class="suggestion-title">{{suggestion.name}}</h2>
                   <div class="col-sm-6 delete-col">
                     <button type="button" class="btn btn-danger btn-block delete-btn" data-suggestion-id="{{suggestion._id}}">DELETE</button>
                   </div>
+                  <h2 class="suggestion-title">{{suggestion.name}}</h2>
                 </div>
                 <div class="col-sm-3 spacer-col">
                 </div>
@@ -85,10 +85,10 @@
             <div class="col-sm-10 col-sm-offset-1 suggestion-card">
               <div class="row">
                 <div class="col-sm-6 title-col">
-                  <h2 class="suggestion-title">{{name}}</h2>
                   <div class="col-sm-6 delete-col">
                     <button type="button" class="btn btn-danger btn-block delete-btn" data-suggestion-id="{{_id}}">DELETE</button>
                   </div>
+                  <h2 class="suggestion-title">{{name}}</h2>
                 </div>
                 <div class="col-sm-3 spacer-col">
                 </div>
@@ -136,7 +136,7 @@
             <div class="modal-title">SUGGEST A NEW DESTINATION</div>
             <form id="suggest-form">
               <div class="form-group">
-                <input type="text" class="form-control" name="name" id="modal-input" placeholder="ie, Chevy's">
+                <input type="text" class="form-control" name="name" maxlength="19" id="modal-input" placeholder="ie, Chevy's">
                 <input class="btn btn-success btn-block" id="suggest-submit-btn" type="submit">
               </div>
             </div>
