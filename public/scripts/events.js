@@ -121,6 +121,13 @@ function renderSuggestions(){
     console.log($suggestionId);
     var voteUrl = (suggUrlCall + '/' + $suggestionId);
     console.log(voteUrl);
+
+    $.ajax({
+      method: 'PUT',
+      url: voteUrl,
+      success: voteSuccess,
+      error: voteError
+    });
   });
 }
 
@@ -152,4 +159,12 @@ function suggOnLoadSuccess(json){
 function suggOnLoadError(err){
   console.log('events.js: suggOnLoad error: ', err);
   $suggestionTarget.text('Failed to render Suggestions');
+}
+
+// Updating votes in DOM
+function voteSuccess(){
+  console.log('voteSuccess!');
+}
+function voteError(){
+  console.log('voteError!');
 }
