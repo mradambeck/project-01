@@ -1,6 +1,7 @@
 ////////////////////////////
 // SERVER SIDE JAVASCRIPT //
 ////////////////////////////
+console.log('server.js is running');
 
 // setup express
 var express = require('express'),
@@ -11,11 +12,7 @@ var express = require('express'),
 
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
-
 app.use(bodyParser.urlencoded({ extended: true }));
-
-console.log('server.js is running');
-
 
 ////////////
 // ROUTES //
@@ -26,11 +23,9 @@ console.log('server.js is running');
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
-
 app.get('/events/:id', function homepage (req, res) {
   res.sendFile(__dirname + '/views/event.html');
 });
-
 
 // JSON API Endpoints
 app.get('/api/events', controllers.events.index);
@@ -40,7 +35,7 @@ app.get('/api/events/:id/suggestions/:suggid', controllers.suggestions.showOneSu
 app.post('/events', controllers.events.createEvent);
 app.post('/api/events/:id/suggestions', controllers.suggestions.createSuggestion);
 app.put('/api/events/:id/suggestions/:suggid', controllers.suggestions.update);
-
+app.delete('/api/events/:id/suggestions/:suggid', controllers.suggestions.erase);
 
 ////////////
 // SERVER //

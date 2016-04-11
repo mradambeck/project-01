@@ -72,11 +72,31 @@ function update (req, res) {
   });
 }
 
+function erase(req, res) {
+  db.Event.findOne({ _id: req.params.id }, function(err, foundEvent){
+    console.log('erase findOne db.Event');
+    if (err) {console.log('suggestionsController, showOne err: ', err);
+      return res.status(404).send({error: err});
+    }
+    var suggestPath = foundEvent.activity.suggestions;
+    var actualItem = suggestPath.id(req.params.suggid);
+    actualItem.remove();
+    foundEvent.save(function(err, savedEvent){
+      if(err) { console.log('erase failed');
+        return res.status(404).send({error: err});
+      }
+      var path = savedEvent.activity.suggestions.id(req.params.suggid);
+      console.log(('suggestion deleted? '), (path === null));
+      res.json(path);
+    });
+  });
+}
 
 // export public methods here
 module.exports = {
   showSuggestions: showSuggestions,
   showOneSuggestion: showOneSuggestion,
   createSuggestion: createSuggestion,
-  update: update
+  update: update,
+  erase: erase
 };

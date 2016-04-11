@@ -10,10 +10,12 @@ urlCall = ('/api/events/' + eventID); // creates API call URL
 suggUrlCall = ('/api/events/' + eventID + '/suggestions'); // creates API call for Suggestions URL
 console.log('URL call for suggestions: ', suggUrlCall);
 
+// Global Variables
 var elementId,
 eventData,
 suggestionData,
 suggOnLoadData,
+$deleteButtonId,
 $eventTarget,
 $suggestionId,
 $suggestionTarget,
@@ -30,14 +32,11 @@ $(document).ready(function() {
   $eventTarget = $('#event-target');
   $suggestionTarget = $('#suggestions-target');
 
-
-  // handlebars compile
+  // handlebars compiling
   var eventSource = $('#event-template').html();
   eventTemplate = Handlebars.compile(eventSource);
-
   var suggestionsSource = $('#suggestions-template').html();
   suggestionsTemplate = Handlebars.compile(suggestionsSource);
-
   var suggOnLoadSource = $('#sugg-onLoad-template').html();
   suggOnLoadTemplate = Handlebars.compile(suggOnLoadSource);
 
@@ -58,6 +57,7 @@ $(document).ready(function() {
     error: suggOnLoadError
   });
 
+
   // Open Suggestion modal
   $('#suggest-btn').on('click', function(){
     $('#suggest-modal').modal();
@@ -66,14 +66,10 @@ $(document).ready(function() {
   // Suggestions submission handling
   $('#suggest-submit-btn').on('click', function(e) {
     e.preventDefault();
+    var formData = $('input#modal-input.form-control').serializeArray(); // get data from modal fields
+    var suggestUrl = '/api/events/' + eventID + '/suggestions'; // create path to post to
 
-    // get data from modal fields
-    var formData = $('input#modal-input.form-control').serializeArray();
-
-    // create path to post to
-    var suggestUrl = '/api/events/' + eventID + '/suggestions';
-
-    // POST to SERVER
+    // POST suggestion to server
     $.ajax({
       method: 'POST',
       url: suggestUrl,
@@ -87,8 +83,6 @@ $(document).ready(function() {
     $('#suggest-modal').modal('hide');
   });
 
-
-
 });
 
 
@@ -100,16 +94,14 @@ $(document).ready(function() {
 function renderEvent(){
   var eventHtml = eventTemplate({event: eventData});
   $eventTarget.append(eventHtml);
-
 }
 
 // handlebars rendering of a new suggestion card
 function renderSuggestion(){
   var suggestionHtml = suggestionsTemplate({suggestion: suggestionData});
   $suggestionTarget.append(suggestionHtml);
-  console.log('renderSuggestion');
   vote();
-  console.log('vote called');
+  erase();
 }
 
 // handlebars rendering of all suggestions on load
@@ -117,15 +109,15 @@ function renderSuggestions(){
   var suggestionsHtml = suggOnLoadTemplate({suggestions: suggOnLoadData});
   $suggestionTarget.append(suggestionsHtml);
   vote();
-  console.log('vote called');
+  erase();
 }
 
+
+// Voting
 function vote(){
   $('.vote-btn').on('click', function(event){
-    console.log('vote');
     event.preventDefault();
     $suggestionId = $(this).data('suggestion-id');
-    $voteButton = $(this);
     var voteUrl = (suggUrlCall + '/' + $suggestionId);
 
     $.ajax({
@@ -133,6 +125,21 @@ function vote(){
       url: voteUrl,
       success: voteSuccess,
       error: voteError
+    });
+  });
+}
+
+// Delete a suggestion
+function erase(){
+  $('.delete-btn').on('click', function(event){
+    $deleteButtonId = $(this).data('suggestion-id');
+    var deleteUrl = (suggUrlCall + '/' + $deleteButtonId);
+
+    $.ajax({
+      method: 'DELETE',
+      url: deleteUrl,
+      success: deleteSuccess,
+      error: deleteError
     });
   });
 }
@@ -175,4 +182,16 @@ function voteSuccess(voteCount){
 function voteError(){
   console.log('voteError!');
   $suggestionTarget.text('Failed to render vote!');
+}
+
+// Deleting Suggestions
+function deleteSuccess(){
+  console.log("deleteSuccess!");
+  var cardId = '#' + $deleteButtonId + '-card';
+  var spacerId = '#' + $deleteButtonId + '-spacer';
+  $(cardId).hide("slow");
+  $(spacerId).hide("slow");
+}
+function deleteError(err){
+  console.log("deleteError! ", err);
 }
