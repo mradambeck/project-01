@@ -16,7 +16,8 @@ suggestionData,
 suggOnLoadData,
 $eventTarget,
 $suggestionId,
-$suggestionTarget;
+$suggestionTarget,
+$voteButton;
 
 
 ///////////////
@@ -88,11 +89,7 @@ $(document).ready(function() {
     $('#suggest-modal').modal('hide');
   });
 
-  $('.vote-btn').on('click', function(event){
-    // event.preventDefault();
-    $suggestionId = $(this).data('suggestion-id');
-    console.log($suggestionId);
-  });
+
 
 });
 
@@ -117,6 +114,14 @@ function renderSuggestion(){
 function renderSuggestions(){
   var suggestionsHtml = suggOnLoadTemplate({suggestions: suggOnLoadData});
   $suggestionTarget.append(suggestionsHtml);
+  $('.vote-btn').on('click', function(event){
+    event.preventDefault();
+    console.log('vote button clicked');
+    $suggestionId = $(this).data('suggestion-id');
+    console.log($suggestionId);
+    var voteUrl = (suggUrlCall + '/' + $suggestionId);
+    console.log(voteUrl);
+  });
 }
 
 // Populating event on load
