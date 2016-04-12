@@ -10,8 +10,12 @@ This app allows you to create an idea for an event, but let your friends fill in
 
 - HTML / CSS
 - Bootstrap
-- Javascript / Jquery / Node.js
-- MongoDB / Mongoose
+- Javascript
+- jquery
+- Node.js
+- Express
+- MongoDB
+- Mongoose
 
 
 ## Existing Features
@@ -20,6 +24,8 @@ This app allows you to create an idea for an event, but let your friends fill in
 - Name the type of activity
 - Add Suggestions for destinations
 - Vote on the suggestions
+- Suggestions reorder based on votes
+- Voting can be ended, at which point the page only displays results
 
 
 ## Planned Features
@@ -27,6 +33,6 @@ This app allows you to create an idea for an event, but let your friends fill in
 - Limit votes to one per person
 - End voting at specified time
 - Have multiple activities within one night (with voting on suggestions within each)
-- Schedule activities
+- Enter times for activities
 - Only allow event to be seen by logged in users whom have been given permission to views
 - Allow users to comment on Activities
