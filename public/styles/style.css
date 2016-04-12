@@ -18,6 +18,11 @@ h1 {
   font-weight: 600;
 }
 
+hr {
+  border-color: #edfaf6;
+
+}
+
 input {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 400;
@@ -52,6 +57,10 @@ p {
 
 .blurb {
   padding-left: 20px;
+}
+
+.blurb h2{
+  font-size: 26px;
 }
 
 .btn {
@@ -121,6 +130,10 @@ p {
   padding-left: 0;
 }
 
+.closed-modal-suggestions {
+  margin-left: 40px;
+}
+
 .form-block {
   padding-top: 25px;
   padding-right: 90px;
@@ -179,6 +192,21 @@ p {
   text-align: center;
 }
 
+#closed-modal {
+  background-color: #b0dec8;
+  background: linear-gradient(to bottom right, #baeddd, #edfaf6);
+  color: #303030;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+#closed-modal-header {
+  color: #fff;
+  font-family: 'Ruda', sans-serif;
+}
+#closed-modal-header h1{
+ font-size: 60px;
+}
+
 #end-voting-btn {
   margin-bottom: 30px;
 }
@@ -201,6 +229,10 @@ p {
   text-align: center;
   margin-top: 15px;
   font-size: 50px;
+}
+
+#modal-bottom {
+  margin-bottom: 60px;
 }
 
 #suggest-modal div.modal-body{

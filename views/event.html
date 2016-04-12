@@ -141,10 +141,10 @@
       <!-- Voting closed Modal -->
 
       <div class="modal fade" tabindex="-1" role="dialog" id="voting-closed-modal" data-backdrop="static" >
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-body">
-              <div class="modal-title" id="closed-modal"><h1>VOTING CLOSED</h1></div>
+        <div class="modal-dialog modal-lg" >
+          <div class="modal-content" id="closed-modal">
+            <div class="modal-body" >
+              <div class="modal-title" id="closed-modal-header"><h1>VOTING CLOSED</h1></div>
               <hr />
             </div>
             <div id="closed-modal-target">
@@ -157,7 +157,8 @@
                     <div class="row"><h3 class="closed-modal-suggestions">{{name}}: {{votes}} votes</h3></div>
                     {{/each}}
                   </div>
-                </row>
+                  <div class="row" id="modal-bottom"></div>
+                </div>
               </script>
 
             </div>
