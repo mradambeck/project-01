@@ -29,8 +29,10 @@ input {
 }
 
 label {
+  font-family: 'Ubuntu', sans-serif;
   font-size: 17px;
   font-weight: 400;
+  padding-left: 5px;
 }
 
 p {
@@ -130,10 +132,6 @@ p {
   padding-left: 0;
 }
 
-.closed-modal-suggestions {
-  margin-left: 40px;
-}
-
 .form-block {
   padding-top: 25px;
   padding-right: 90px;
@@ -166,6 +164,8 @@ p {
 }
 
 .suggestion-title  {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
   margin-left: 30px;
   font-size: 45px;
 }
@@ -207,6 +207,14 @@ p {
  font-size: 60px;
 }
 
+#closed-modal-target {
+  text-align: center;
+}
+#closed-modal-title {
+ font-family: 'Ubuntu', sans-serif;
+ font-weight: 400;
+}
+
 #end-voting-btn {
   margin-bottom: 30px;
 }
@@ -232,6 +240,7 @@ p {
 }
 
 #modal-bottom {
+  text-align: center;
   margin-bottom: 60px;
 }
 
