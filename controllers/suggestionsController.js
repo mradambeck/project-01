@@ -1,6 +1,6 @@
 var db = require('../models');
 
-//get all suggestions within one event
+// Get all suggestions within one event
 // GET '/api/events/:id/suggestions/'
 function showSuggestions (req, res) {
   db.Event.findOne({_id: req.params.id}, function (err, foundEvent){
@@ -14,17 +14,15 @@ function showSuggestions (req, res) {
   });
 }
 
-//Get one Suggestion:
+// Get one Suggestion
 // GET '/api/events/:id/suggestions/:suggid'
 function showOneSuggestion (req, res) {
   db.Event.findOne({_id: req.params.id}, function (err, foundEvent){
-    console.log('findOne db.Event ');
     if (err) {console.log('suggestionsController, showOne err: ', err);
       return res.status(404).send({error: err});
     }
     var suggestPath = foundEvent.activity.suggestions;
     var actualItem = suggestPath.id(req.params.suggid);
-    console.log('actualItem: ', actualItem);
 
     res.json(actualItem);
   });
@@ -58,13 +56,12 @@ function createSuggestion (req, res) {
 // PUT '/api/events/:id/suggestions/:suggid'
 function update (req, res) {
   db.Event.findOne({_id: req.params.id}, function (err, foundEvent){
-    console.log('update findOne db.Event');
     if (err) {console.log('suggestionsController, showOne err: ', err);
       return res.status(404).send({error: err});
     }
     var suggestPath = foundEvent.activity.suggestions;
     var actualItem = suggestPath.id(req.params.suggid);
-    actualItem.votes++;
+    actualItem.votes++; // increment votes in DB
     foundEvent.save(function(err, savedEvent){
       if(err) { console.log('adding to votes failed');
         return res.status(404).send({error: err});
@@ -76,10 +73,10 @@ function update (req, res) {
   });
 }
 
+// Remove a suggestion
 // DELETE '/api/events/:id/suggestions/:suggid'
 function erase(req, res) {
   db.Event.findOne({ _id: req.params.id }, function(err, foundEvent){
-    console.log('erase findOne db.Event');
     if (err) {console.log('suggestionsController, showOne err: ', err);
       return res.status(404).send({error: err});
     }

@@ -23,8 +23,6 @@ function show (req, res) {
     });
     res.json(foundEvent);
   });
-
-
 }
 
 // POST /events (create event via form)

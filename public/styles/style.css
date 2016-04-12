@@ -3,15 +3,10 @@ html, body {
 }
 body {
   background-color: #ededed;
-  /*height: 100%;*/
   background-image: url("/images/grid-bg.png");
   color: #303030;
   font-family: 'Ruda', sans-serif;
   font-weight: 300;
-}
-
-div {
-  /*border: 1px dotted grey;*/
 }
 
 h1 {
@@ -47,12 +42,9 @@ p {
 
 .activity-title {
   text-align: center;
-  /*font-family: 'Josefin Sans', sans-serif;*/
-  /*font-weight: 100;*/
 }
 
 .add-suggestion-card {
-
   text-align: center;
   height: 100px;
 }
@@ -96,8 +88,6 @@ p {
 
 .btn-success {
   background-color: #3c3c3b;
-  /*color: #2d2d28;*/
-  /*background-color: transparent;*/
   border-color: #2d2d28;
 }
 
@@ -172,7 +162,6 @@ p {
 
 .title-col {
   padding: 0px;
-
 }
 
 .vote-btn {
@@ -264,9 +253,7 @@ form #event-title {
   .delete-btn {
     display: none;
   }
-
   .form-block  {
     padding-right: 15px;
   }
-
 }

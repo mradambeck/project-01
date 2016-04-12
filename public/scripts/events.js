@@ -85,6 +85,7 @@ $(document).ready(function() {
     $('#suggest-modal').modal('hide');
   });
 
+  // turn off voting, display results page
   $('#end-voting-btn').on('click', function(){
 
     $.ajax({
@@ -103,7 +104,7 @@ $(document).ready(function() {
 // FUNCTIONS //
 ///////////////
 
-// handlebars rendering of event data
+// HANDLEBARS rendering of event data
 function renderEvent(){
   var eventHtml = eventTemplate({event: eventData});
   $eventTarget.append(eventHtml);
@@ -111,21 +112,21 @@ function renderEvent(){
   $('.activity-text').text(txt);
   console.log(eventData.votingAllowed);
 }
-// handlebars rendering of a new suggestion card
+// HANDLEBARS rendering of a new suggestion card
 function renderSuggestion(){
   var suggestionHtml = suggestionsTemplate({suggestion: suggestionData});
   $suggestionTarget.append(suggestionHtml);
   vote();
   erase();
 }
-// handlebars rendering of all suggestions on load
+// HANDLEBARS rendering of all suggestions on load
 function renderSuggestions(){
   var suggestionsHtml = suggOnLoadTemplate({suggestions: suggOnLoadData});
   $suggestionTarget.append(suggestionsHtml);
   vote();
   erase();
 }
-// handlebars rendering of Closed Modal
+// HANDLEBARS rendering of Closed Modal
 function renderClosedModal(){
   var closedHtml = closedModalTemplate({event: eventData});
   $('#closed-modal-target').append(closedHtml);
@@ -162,7 +163,7 @@ function erase(){
   });
 }
 
-// Populating event on load
+// Populating event data on load
 function handleSuccess(json){
   eventData = json;
   renderEvent();
@@ -186,11 +187,10 @@ function suggestionError(err){
   $suggestionTarget.text('Failed to render Suggestion');
 }
 
-// Populating suggestions on load
+// Populating existing suggestions on load
 function suggOnLoadSuccess(json){
   suggOnLoadData = json;
   renderSuggestions();
-
 }
 function suggOnLoadError(err){
   console.log('events.js: suggOnLoad error: ', err);
@@ -219,7 +219,6 @@ function deleteError(err){
 }
 
 // End Voting
-
 function endVotingSuccess(json){
   eventData = json;
   votingClosed();
@@ -227,7 +226,6 @@ function endVotingSuccess(json){
 function endVotingError(){
   console.log('endVotingError!');
 }
-
 function votingClosed(){
   console.log('voting closed!');
   $('#voting-closed-modal').modal();
@@ -236,5 +234,5 @@ function votingClosed(){
 
 // Make a string Uppercase
 function toUpperCase(str) {
-    return str.toUpperCase();
+  return str.toUpperCase();
 }
