@@ -41,4 +41,20 @@ This app allows you to create an idea for an event, but let your friends fill in
 ## Screenshots
 
 Intro page:
+
 ![Introductory page of the app](public/images/screenshots/intro_screen.png?raw=true "Intro Page")
+
+
+Voting page:
+
+![Voting page of the app](public/images/screenshots/voting_screen.png?raw=true "Voting Screen")
+
+
+Adding a Suggestion:
+
+![Adding a suggestion to the event](public/images/screenshots/adding_suggestion.png?raw=true "Adding a Suggestion")
+
+
+Voting Closed Modal:
+
+![Voting closed modal](public/images/screenshots/voting_closed.png?raw=true "Voting Closed")

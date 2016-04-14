@@ -89,7 +89,7 @@ function erase(req, res) {
       }
       var path = savedEvent.activity.suggestions.id(req.params.suggid);
       console.log(('suggestion deleted? '), (path === null));
-      res.json(path);
+      res.json(path); 
     });
   });
 }
