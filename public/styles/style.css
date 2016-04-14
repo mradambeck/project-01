@@ -40,12 +40,7 @@ p {
   font-size: 18px;
 }
 
-.activity-title {
-  text-align: center;
-}
-
 .add-suggestion-card {
-  text-align: center;
   height: 100px;
 }
 
@@ -138,7 +133,6 @@ p {
 .modal-title{
   font-weight: 700;
   margin-bottom: 10px;
-  text-align: center;
 }
 
 .spacer {
@@ -164,6 +158,10 @@ p {
   padding: 0px;
 }
 
+.txt-align-ctr {
+  text-align: center;
+}
+
 .vote-btn {
   margin-top: 18px;
   border-radius: 0px;
@@ -171,14 +169,6 @@ p {
 
 .vote-col {
  background: #c2e6d5;
-}
-
-.vote-count{
-  text-align: center;
-}
-
-.votes  {
-  text-align: center;
 }
 
 #closed-modal {
@@ -196,9 +186,6 @@ p {
  font-size: 60px;
 }
 
-#closed-modal-target {
-  text-align: center;
-}
 #closed-modal-title {
  font-family: 'Ubuntu', sans-serif;
  font-weight: 400;
@@ -206,6 +193,8 @@ p {
 
 #end-voting-btn {
   margin-bottom: 30px;
+  opacity: 0.9;
+  box-shadow: 3px 3px 3px #e0e0e0;
 }
 
 #event-title {
@@ -213,7 +202,6 @@ p {
   background: linear-gradient(left top, #604846, #989897);
   color: #ffffff;
   opacity: 0.5;
-  text-align: center;
 }
 
 #event-title-text {
@@ -223,13 +211,11 @@ p {
 
 #intro-title {
   color: #fff;
-  text-align: center;
   margin-top: 15px;
   font-size: 50px;
 }
 
 #modal-bottom {
-  text-align: center;
   margin-bottom: 60px;
 }
 

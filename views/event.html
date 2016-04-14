@@ -31,10 +31,10 @@
       <!-- Event Handlebars template -->
       <script id="event-template" type="text/x-handlebars-template">
         <div class="row">
-          <div class="col-xs-12" id="event-title"><h1 id="event-title-text">{{event.name}} // {{event.date}}</h1></div>
+          <div class="col-xs-12 txt-align-ctr" id="event-title"><h1 id="event-title-text">{{event.name}} // {{event.date}}</h1></div>
         </div>
         <div class="row">
-          <div class="col-sm-10 col-sm-offset-1 activity-title"><h3 class="activity-text">{{event.activity.name}}</h3></div>
+          <div class="col-sm-10 col-sm-offset-1 txt-align-ctr"><h3 class="activity-text">{{event.activity.name}}</h3></div>
         </div>
       </script>
       <!-- end of handlebars -->
@@ -56,10 +56,10 @@
                 <div class="col-sm-3 spacer-col">
                 </div>
                 <div class="col-sm-3 vote-col">
-                  <div class="row vote-count">
+                  <div class="row txt-align-ctr">
                     <h1 id="{{suggestion._id}}">{{suggestion.votes}}</h1>
                   </div>
-                  <div class="row votes">
+                  <div class="row txt-align-ctr">
                     <h4>votes</h4>
                   </div>
                   <div class="row">
@@ -87,10 +87,10 @@
                 <div class="col-sm-3 spacer-col">
                 </div>
                 <div class="col-sm-3 vote-col">
-                  <div class="row vote-count">
+                  <div class="row vote-count txt-align-ctr">
                     <h1 id="{{_id}}">{{votes}}</h1>
                   </div>
-                  <div class="row votes">
+                  <div class="row txt-align-ctr">
                     <h4>votes</h4>
                   </div>
                   <div class="row">
@@ -108,7 +108,7 @@
 
     <!-- Add a suggestion card -->
     <div class="row">
-      <div class="col-sm-10 col-sm-offset-1 suggestion-card add-suggestion-card">
+      <div class="col-sm-10 col-sm-offset-1 suggestion-card add-suggestion-card txt-align-ctr">
         <button type="button" class="btn btn-primary btn-lg" id="suggest-btn">Add a New Suggestion</button>
       </div>
     </div>
@@ -127,7 +127,7 @@
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="modal-title">SUGGEST A NEW DESTINATION</div>
+            <div class="modal-title txt-align-ctr">SUGGEST A NEW DESTINATION</div>
             <form id="suggest-form">
               <div class="form-group">
                 <input type="text" class="form-control" name="name" maxlength="25" id="modal-input" placeholder="ie, Chevy's">
@@ -144,10 +144,10 @@
         <div class="modal-dialog modal-lg" >
           <div class="modal-content" id="closed-modal">
             <div class="modal-body" >
-              <div class="modal-title" id="closed-modal-header"><h1>VOTING CLOSED</h1></div>
+              <div class="modal-title txt-align-ctr" id="closed-modal-header"><h1>VOTING CLOSED</h1></div>
               <hr />
             </div>
-            <div id="closed-modal-target">
+            <div class="txt-align-ctr" id="closed-modal-target">
               <!-- Handlebars template -->
               <script id="voting-closed-template" type="text/x-handlebars-template">
                 <div class="row">
@@ -157,7 +157,7 @@
                     <div class="row"><h3 class="closed-modal-suggestions">{{name}}: {{votes}} votes</h3></div>
                     {{/each}}
                   </div>
-                  <div class="row" id="modal-bottom"></div>
+                  <div class="row" class="txt-align-ctr" id="modal-bottom"></div>
                 </div>
               </script>
 
