@@ -36,3 +36,9 @@ This app allows you to create an idea for an event, but let your friends fill in
 - Enter times for activities
 - Only allow event to be seen by logged in users whom have been given permission to views
 - Allow users to comment on Activities
+
+
+## Screenshots
+
+Intro page:
+![Introductory page of the app](public/images/screenshots/intro_screen.png?raw=true "Intro Page")
