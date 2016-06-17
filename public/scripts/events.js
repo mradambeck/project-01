@@ -13,6 +13,7 @@ console.log('URL call for suggestions: ', suggUrlCall);
 // Global Variables
 var elementId,
 eventData,
+hasVoted,
 suggestionData,
 suggOnLoadData,
 $deleteButtonId,
@@ -31,6 +32,7 @@ $(document).ready(function() {
   console.log('page loaded, events.js ready!'); // sanity check
   $eventTarget = $('#event-target');
   $suggestionTarget = $('#suggestions-target');
+  hasVoted = false;
 
   // handlebars compiling
   var eventSource = $('#event-template').html();
@@ -134,17 +136,22 @@ function renderClosedModal(){
 
 // Voting
 function vote(){
+
   $('.vote-btn').on('click', function(event){
     event.preventDefault();
     $suggestionId = $(this).data('suggestion-id');
     var voteUrl = (suggUrlCall + '/' + $suggestionId);
 
-    $.ajax({
-      method: 'PUT',
-      url: voteUrl,
-      success: voteSuccess,
-      error: voteError
-    });
+    if (hasVoted === false){
+      $.ajax({
+        method: 'PUT',
+        url: voteUrl,
+        success: voteSuccess,
+        error: voteError
+      });
+    }
+
+
   });
 }
 
@@ -201,6 +208,7 @@ function suggOnLoadError(err){
 function voteSuccess(voteCount){
   elementId = elementIdStart + $suggestionId;
   $(elementId).text(voteCount);
+  hasVoted = true;
 }
 function voteError(){
   console.log('voteError!');
